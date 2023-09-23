@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON to HTML</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Case Details</h1>
+    <div id="case-details"></div>
+
+    <script>
+        // JSON data
+        var jsonData = {
+    // Add Your Json Data Here 
+};
+
+        // Function to create HTML from JSON
+        function jsonToHtml(json) {
+            var html = "<ul>";
+            for (var key in json) {
+                if (json.hasOwnProperty(key)) {
+                    var value = json[key];
+                    if (typeof value === "object") {
+                        html += "<li>" + key + ": " + jsonToHtml(value) + "</li>";
+                    } else {
+                        html += "<li>" + key + ": " + value + "</li>";
+                    }
+                }
+            }
+            html += "</ul>";
+            return html;
+        }
+
+        // Display JSON as HTML
+        document.getElementById("case-details").innerHTML = jsonToHtml(jsonData);
+    </script>
+</body>
+</html>
